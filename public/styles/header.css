@@ -1,0 +1,34 @@
+header.first-header {
+  display: flex;
+  height: 400px;
+  width: 100%;
+  /* background-color: #e37500; */
+  /* background-image: url("https://www.transparenttextures.com/patterns/subtle-grey.png"); */
+  background-color: #00f587;
+  background-image: url("https://www.transparenttextures.com/patterns/dimension.png");
+  flex-direction: column;
+  margin-top: 120px;
+}
+
+.avatarImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.avatarName {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #FFFF;
+}
+
+
+h2 {
+  margin-top: 10px;
+}
+
+img {
+  padding-top: 10px;
+}
