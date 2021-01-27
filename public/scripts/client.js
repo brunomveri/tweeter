@@ -79,12 +79,12 @@ $(document).ready(function() {
     
     event.preventDefault();
     
-    const dataEx = $(this).serialize();
+    const dataInput = $(this).serialize();
 
     $.ajax({
       url:"/tweets", 
       method: "POST",
-      data: dataEx
+      data: dataInput
     })
       .then(() => console.log('ajax callback called'))
       .catch(err => {
