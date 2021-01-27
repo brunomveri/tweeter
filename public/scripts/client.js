@@ -74,10 +74,24 @@ $(document).ready(function() {
   
   renderTweets(data);
 
-  // const $tweet = createTweetElement(tweetData);
 
-  // console.log($tweet);
-  // $('.tweets-container').append($tweet);
+  $("form").on("submit", function(event) {
+    
+    event.preventDefault();
+    
+    const dataEx = $(this).serialize();
+
+    $.ajax({
+      url:"/tweets", 
+      method: "POST",
+      data: dataEx
+    })
+      .then(() => console.log('ajax callback called'))
+      .catch(err => {
+        console.log('ajax error caught');
+        console.log(err);
+      });
+  });
 
 
 });
