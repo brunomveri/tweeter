@@ -45,7 +45,7 @@ $(document).ready(function() {
               </div>
             </div>
             <div class="tweet-body-text">
-              <p>${tweetObj.content.text}</p>
+            <p>${escape(tweetObj.content.text)}</p>  
             </div>
           </header>
           <footer>
@@ -62,6 +62,12 @@ $(document).ready(function() {
     
     ` 
     return $tweet;
+  };
+
+  const escape =  function(str) {
+    let div = document.createElement('div');
+    div.appendChild(document.createTextNode(str));
+    return div.innerHTML;
   };
 
   const renderTweets = function(tweets) {
