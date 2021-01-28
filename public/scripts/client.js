@@ -5,31 +5,6 @@
  */
 $(document).ready(function() {
 
-  // const data = [
-  //   {
-  //     "user": {
-  //       "name": "Newton",
-  //       "avatars": "https://i.imgur.com/73hZDYK.png"
-  //       ,
-  //       "handle": "@SirIsaac"
-  //     },
-  //     "content": {
-  //       "text": "If I have seen further it is by standing on the shoulders of giants"
-  //     },
-  //     "created_at": 1461116232227
-  //   },
-  //   {
-  //     "user": {
-  //       "name": "Descartes",
-  //       "avatars": "https://i.imgur.com/nlhLi3I.png",
-  //       "handle": "@rd" },
-  //     "content": {
-  //       "text": "Je pense , donc je suis"
-  //     },
-  //     "created_at": 1461113959088
-  //   }
-  // ]
-
   const createTweetElement = function (tweetObj) {
     let $tweet =`
     
@@ -73,15 +48,13 @@ $(document).ready(function() {
   const renderTweets = function(tweets) {
     for (let element of tweets) {
       const $tweet = createTweetElement(element);
-      // $('.tweets-container').append($tweet);
-      $('.tweets-container').prepend($tweet);  // or .prepend()    !!!!!
+      $('.tweets-container').prepend($tweet);
     }
   };
   
-  // renderTweets(data);
-
   
   $("form").on("submit", function(event) {    
+    
     event.preventDefault();
     
     const dataInput = $(this).serialize();
@@ -89,9 +62,10 @@ $(document).ready(function() {
     const dataValue = $(this).serializeArray()["0"]["value"];
     
     if (dataValue === '' || dataValue === null) {
-      alert('Your content is not present');
+      $(".error-content-hidden").slideDown("slow", () => $(".error-content-hidden").attr("id", "error-shown"));
+      $("#tweet-text").on("input", () => $(".error-content-hidden").slideUp());
     } else if (dataValue.length > 140) {
-      alert('Your content is too long');
+      $(".error-size-hidden").slideDown(() => $(".error-size-hidden").attr("id", "error-shown"));
     } else { 
     
       $.ajax({
@@ -119,6 +93,5 @@ $(document).ready(function() {
 
   };
 
-  // loadTweets();
 
 });
