@@ -99,3 +99,20 @@ footer {
 .image-name {
   display: flex;
 }
+
+.error-size-hidden {
+  display: none;
+  color: red;
+}
+
+.error-content-hidden {
+  display: none;
+  color: red;
+}
+
+#error-shown {
+  display: flex;
+  color: red;
+  border: solid;
+  padding: 15px;
+}
