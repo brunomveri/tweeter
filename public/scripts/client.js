@@ -74,20 +74,38 @@ $(document).ready(function() {
   
   // renderTweets(data);
 
-
+  
   $("form").on("submit", function(event) {    
     event.preventDefault();
+    
     const dataInput = $(this).serialize();
-    $.ajax({
-      url:"/tweets", 
-      method: "POST",
-      data: dataInput
-    })
-      .then(() => console.log('New tweet has been added to the databse'))
-      .catch(err => console.log('AJAX error caught ->', err));
+    
+    const dataValue = $(this).serializeArray()["0"]["value"];
+    
+    if (dataValue === '' || dataValue === null) {
+      alert('Your content is not present');
+    } else if (dataValue.length > 140) {
+      alert('Your content is too long');
+    } else { 
+    
+      $.ajax({
+        url:"/tweets", 
+        method: "POST",
+        data: dataInput
+      })
+        .then(() => {
+          loadTweets();
+          $("form").trigger("reset");
+          $(".counter").text(140);
+          console.log('New tweet has been added to the database');
+        })
+        .catch(err => console.log('AJAX error caught ->', err));
+
+    }
+
   });
 
-  const loadTweets = function() {
+  const loadTweets = () => {
 
     $.ajax({ url: "/tweets", method: "GET" })
       .then(res => renderTweets(res))
@@ -95,6 +113,6 @@ $(document).ready(function() {
 
   };
 
-  loadTweets();
+  // loadTweets();
 
 });
