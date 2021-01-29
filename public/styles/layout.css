@@ -16,7 +16,7 @@ main.container {
   width: 90%;
   flex-direction: column;
   align-items: center;
-  padding: 5%;
+  padding: 63px;
   width: 100%;
 }
 
@@ -27,6 +27,22 @@ body {
   font-family: 'Source Sans Pro', sans-serif;
   /* font-weight: 300; */
 }
+
+.main-div {
+  display: flex;
+  flex-direction: row;
+  margin-top: 89px;
+}
+
+@media screen and (max-width: 768px) {
+  .main-div {
+    flex-direction: column;
+    margin-top: 0px;
+    
+  }
+
+}
+
 
 
 /*

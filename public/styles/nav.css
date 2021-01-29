@@ -13,10 +13,30 @@ nav {
   top: 0;
 }
 
+.write-achor {
+  display: flex;
+  flex-direction: column;
+}
+
+
+a:link, a:visited {
+  text-decoration: none;
+}
+
 .first-span {
   font-size: 23pt;
 }
 
-.second-span {
+.link-button {
   font-family: 'Source Sans Pro';
+  color: #FFFF;
+}
+
+@media screen and (max-width: 768px) {
+
+  nav {
+    background-color: #00f587;
+    background-image: url(https://www.transparenttextures.com/patterns/dimension.png);
+  }
+
 }

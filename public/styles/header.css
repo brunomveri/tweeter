@@ -1,13 +1,13 @@
 header.first-header {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
   height: 400px;
   width: 100%;
-  /* background-color: #e37500; */
-  /* background-image: url("https://www.transparenttextures.com/patterns/subtle-grey.png"); */
   background-color: #00f587;
   background-image: url("https://www.transparenttextures.com/patterns/dimension.png");
-  flex-direction: column;
-  margin-top: 120px;
+  /* margin-top: 120px; */
+  margin: 70px 45px 0px 45px;
 }
 
 .avatarImage {
@@ -24,11 +24,16 @@ header.first-header {
   color: #FFFF;
 }
 
-
-h2 {
-  margin-top: 10px;
-}
-
 img {
   padding-top: 10px;
+  /* margin-top: 120px; */
+}
+
+@media screen and (max-width: 768px) {
+  
+  header.first-header {
+  margin: 120px 0px 0px 0px;
+  }
+
+
 }
