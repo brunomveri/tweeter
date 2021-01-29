@@ -1,10 +1,5 @@
-/*
- * Client-side JS logic goes here
- * jQuery is already loaded
- * Reminder: Use (and do all your DOM work in) jQuery's document ready function
- */
 $(document).ready(function() {
-
+  
   const createTweetElement = function (tweetObj) {
     let $tweet =`
     
@@ -67,7 +62,7 @@ $(document).ready(function() {
     } else if (dataValue.length > 140) {
       $(".error-size-hidden").slideDown(() => $(".error-size-hidden").attr("id", "error-shown"));
     } else { 
-    
+
       $.ajax({
         url:"/tweets", 
         method: "POST",
@@ -86,12 +81,15 @@ $(document).ready(function() {
   });
 
   const loadTweets = () => {
-
     $.ajax({ url: "/tweets", method: "GET" })
-      .then(res => renderTweets(res))
-      .catch(err => console.log('AJAX error caught ->', err));
-
+    .then(res => renderTweets(res))
+    .catch(err => console.log('AJAX error caught ->', err));
   };
-
+  
+  loadTweets();
+  
+  $(".link-button").click(() => {
+    $(".new-tweet-hidden").toggle(() => $(".new-tweet-hidden").attr("id", "#new-tweet"));
+  });
 
 });
