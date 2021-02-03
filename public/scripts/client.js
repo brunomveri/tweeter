@@ -1,6 +1,8 @@
 $(document).ready(function() {
-  
+  console.log(moment);
+  //This function creates a template to be used when a user posts a tweeter
   const createTweetElement = function (tweetObj) {
+    
     let $tweet =`
     
     <article>
@@ -20,7 +22,7 @@ $(document).ready(function() {
           </header>
           <footer>
             <div class="footer-timestamp">
-              <p>10 days ago</p>
+              <p>${moment(tweetObj["created_at"]).fromNow()}</p>
             </div>
             <div class="footer-icons">
               <i class="fas fa-flag"></i>
@@ -40,14 +42,17 @@ $(document).ready(function() {
     return div.innerHTML;
   };
 
+//This is a function to render a new tweet
+
   const renderTweets = function(tweets) {
+    $('.tweets-container').empty();
     for (let element of tweets) {
       const $tweet = createTweetElement(element);
       $('.tweets-container').prepend($tweet);
     }
   };
   
-  
+  //This function handles the input given by a user
   $("form").on("submit", function(event) {    
     
     event.preventDefault();
@@ -89,7 +94,8 @@ $(document).ready(function() {
   loadTweets();
   
   $(".link-button").click(() => {
-    $(".new-tweet-hidden").toggle(() => $(".new-tweet-hidden").attr("id", "#new-tweet"));
+    $(".new-tweet-hidden").toggle(() => $(".new-tweet-hidden").attr("id", "#new-tweet")).scrollTop();
   });
 
+  
 });
