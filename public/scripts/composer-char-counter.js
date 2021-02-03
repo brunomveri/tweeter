@@ -1,4 +1,6 @@
 $(document).ready(function() {
+  // This function counts the numver of characters in the text area,  
+  // changes the counter's color to red and shows error message when the coun goes over 140
   let count = 140;
   let counter = $('.counter');
   
